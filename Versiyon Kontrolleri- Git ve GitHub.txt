@@ -1,0 +1,88 @@
+--İSMAİL AKKAYA--
+pwd: print working directory (nerede olduğumuzu gösterir)
+cd (istediğimiz yere gideriz)
+cd .. (bir önceki klasöre gelir, cd den sonra boşluk var)
+mkdir: make directory (klasör oluşturur)
+touch (dosya oluşturur)
+rm (dosyayı kaldırmak için kullanılır)
+rm -rf (klasörü silmek için kullanılır)
+git config (config ile ayarları değiştiririz)
+git config --global user.name "Berat Çetin" (kullanıcı adımızı belirleriz)
+git config user.name (kullanıcı adımıza bakarız)
+git config --global user.email beratcetiin4@gmail.com (email i belirledik)
+git status (güncel git durumunu gösterir)
+git  init (git e bağlarız dosyayı)
+ls -la (gizli klasörleri gösterir)
+git commit -m "..." (mesajı belirtiriz commit yaparken)
+git log (log ları gösterir, yani ne iş yaptığımızı veya kimin naptığını )
+git commit -a (add yapmadan direkt her şeyi ekleyip commitler)
+git add . (her şeyi ekler tek seferde)
+git switch master (master a geri döneriz)
+git branch (hangi branch de olduğumuzu görürüz)
+git restore ... (branch de önceki haline döndürürüz ama diğer branchte de commit yapmazsak kaybolur eğer bir yanlış yaptıysak)
+
+git merge ... yaparken önce git switch ile nereye eklemek istiyorsak oraya gideriz mesela git switch master daha
+	sonra git merge feature yaparak feature la master birleştirip tek bir branch yapıyoruz ama istersek git log
+	yaparak diğer branchleri görüp diğerlerine gidebiliriz.
+CONFLICT: çakışma- eğer çakışma olursa çakışma olan yerden istediğimiz işlemi yapıp ondan sonra git add . yapıp sonra 
+	commit edersek ve merge işlemi yapmaya çalışırsak bize zaten already up date der yani çoktan merge 
+	edilmiş olur.
+
+git ve github aynı şey değil: git bir versiyon kontrol sistemi, github ise portal bir website
+git te yapılan her kaydetme commit olarak adlandırılır.
+git status çalıştırıp güncel durumuna bakmadan git init yapmamak gerekir
+git ignore: git in görmezden geleceği dosyaları ayarlamak için önce touch ile .gitignore 
+	diye bir dosya oluşturuyoruz içine de gizlemek istediğimiz dosyayı yazarız ve gizli kalır.
+	yani repomuza eklemez.
+
+STASH(saklamak): içimize sinmeyen bir şeyi add yapıp ama commit yapmak istemiyoruz çünkü içimize sinmedi. stash yaparak
+	başka bir alanda zulalayabiliriz. git stash yaparız ve o işlem artık gözükmez. bize bir id verir ve orada saklar.
+	git stash pop: yaparak sakladığımız yerden geri çıkartabiliriz.
+	git stash list: yaparak sakladıklarımızı gösterir.
+	birden fazla stash yaparsak istediğimizi eklemek için git stash apply stash@{0} (eğer sıfırı istiyorsak) yaparız.
+	git stash clear: yaparak hepsini silebiliriz.
+
+branch: ikiye ayrılıp aynı anda birden fazla kişi ile farklı işlemler yapabilme vs. tek başına da dallandırabiliriz.
+git switch (istediğimiz branch e dönüp çalışabiliriz)
+
+git branch -r (remote branchleri görebiliriz)
+
+master da bir şey yapmadan başka bir branch i eklemeye fast forwarding deniyor. 
+
+git add komutu ile ındex-staging e aktarıyoruz, commitlemeden önce yapılır. sahneye almak gibi
+
+feat: yeni özellik anlamında kullanılır. (feature)
+
+git CHECKOUT ile git log yaparak gördüğümüz id lerden istediğimizi checkout un sonuna ekleyerek oraya geri dönebiliriz. ama böyle yaparsak 
+	HEAD ile branch aynı yerde olmaz bu bir kopukluk oluşturur. switch ile master a dönerek halledebiliriz. istersek gidip yeni bir branch açıp 
+	değişiklikler de yapabiliriz.
+
+git RESET ile gitmek istediğimiz log un id sini gireriz sonrasında üstte yaptığımız diğer commit ler silinir. ama yaptığımız değişiklikler editörümüzden
+	gitmez. git reset --hard yaparsak eğer içeriklerini de siler (bunu kullanırken dikkat etmek gerekir)
+
+git REVERT ile yine istediğimiz yere gidip yeni bir commit atayabiliriz. ve oradaki commit silinir. loglar durur hala ama içerikleri silinir.
+
+git DİFF ile hangi değişiklikleri yaptığımızı görebiliriz. tek başına çalıştırırsak güncel de ne değişiklik yaparsak onu gösterir. 
+	git diff HEAD ile son committe ne yaptığımızı görebiliriz. iki commit arasındaki farkları görmek için id git diff id1:id2 yaparak 
+	görebiliriz. iki branch arasındaki farkları da görebiliriz. git diff master feat gibi mesela.
+
+git REBASE ile aradaki merge commitleri sıralayarak düzen sağlarız. ve tarihler değişir. eğer başka insanlarla beraber çalışıyorsak rebase
+	yaparsak diğerlerinin projesini karıştırır dikkat etmek gerekir. eğer feat branch ının içindeyken git rebase master yaparsak feat
+	in arkasına master ı sıralar.
+
+
+GİTHUB da yaptığımız merge pc deki git de yaptığımızla aynı ilerlemez senkron etmek için  
+	git FETCH 	origin master (ile getirebiliriz, fetch git getir demek)
+
+remote branchlere geçerken git CHECKOUT  origin/master (yaparak geçeriz)
+
+GİT PULL = git fetch + git merge (hem git getir hem de birleştir demek, ama önce fetch yapıp bir sıkıntı olmadığını anlayıp yapmamız lazım)
+	
+GitHub dan bir dosya çekmek istersek code kısmına girip orada verilen url yi kopyalayıp terminale girip (cmd vs.) oraya git clone url
+	yapıp bilgisayara klonluyoruz. Başka birinden alıp kodu değiştirip push edemeyiz çünkü iznimiz yok. 
+
+Fork yaparsak kendi repomuza çekeriz. Yollarımız ayrıldı gibisinden. Kendimize clonlayıp işlemler yapıp commitleri ayarlayıp, kodu nereden 
+	forkladıysak orası ile aramızdaki farkları söyler istersek contribute yaparak aldığımız yere istek gönderip oraya da ekleyebiliriz.
+
+Bir projeye başladığımızda IDE den yani vscode vs oradan başlayıp dosya yolunu kopyalayıp terminal de cd dosya yolu diye giderek
+	yine git init vs yaparak github işlemlerini yapabiliriz. bu işlemleri IDE içinde de yapabiliriz istersek.
